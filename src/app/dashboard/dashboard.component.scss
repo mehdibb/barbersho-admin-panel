@@ -1,0 +1,17 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+  padding: 1rem;
+}
+
+.booking-item {
+  display: flex;
+}
+
+.booking-card:not(:last-of-type) {
+  margin-bottom: 0.75rem;
+}

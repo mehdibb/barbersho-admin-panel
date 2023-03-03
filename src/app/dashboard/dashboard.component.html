@@ -1,0 +1,36 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <!-- TODO: i18n -->
+  <h1>Bookings</h1>
+
+  <!-- TODO: i18n -->
+  <p *ngIf="!bookings">Loading...</p>
+  <!-- TODO: i18n -->
+  <p *ngIf="bookings?.length === 0; else elseBlock">No Booking Found</p>
+  <ng-template #elseBlock>
+    <mat-card *ngFor="let booking of bookings" class="booking-card">
+      <mat-card-header>
+        <mat-card-title>
+          {{ booking.bookedTime.toLocaleString("fa-IR") }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <!-- TODO: i18n -->
+          Customer Phone: {{ booking.userPhone }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions class="flex justify-between">
+        <!-- TODO: i18n -->
+        <button mat-raised-button (click)="confirmBooking(booking)" color="primary">Confirm</button>
+        <!-- TODO: i18n -->
+        <button mat-button (click)="rejectBooking(booking)" color="warn">Reject</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-template>
+</mat-drawer-container>
